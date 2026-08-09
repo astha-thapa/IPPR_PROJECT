@@ -1,0 +1,18 @@
+Overall Accuracy : 0.9881
+Macro Precision  : 0.9886
+Macro Recall     : 0.9881
+Macro F1-score   : 0.9881
+
+              precision    recall  f1-score   support
+
+      Circle       1.00      1.00      1.00        24
+     Hexagon       1.00      0.96      0.98        24
+    Pentagon       0.96      1.00      0.98        24
+   Rectangle       1.00      0.96      0.98        24
+      Square       0.96      1.00      0.98        24
+        Star       1.00      1.00      1.00        24
+    Triangle       1.00      1.00      1.00        24
+
+    accuracy                           0.99       168
+   macro avg       0.99      0.99      0.99       168
+weighted avg       0.99      0.99      0.99       168
