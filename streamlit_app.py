@@ -8,9 +8,7 @@ from shape_utils import process_frame, extract_features, get_contours, preproces
 
 st.set_page_config(page_title="Real-Time Shape Recognition", layout="wide")
 
-# ---------------------------------------------------------------------
-# Load trained model once
-# ---------------------------------------------------------------------
+#load trained model
 @st.cache_resource
 def load_model():
     try:
@@ -23,9 +21,7 @@ def load_model():
 
 model, scaler, le = load_model()
 
-# ---------------------------------------------------------------------
-# Sidebar navigation
-# ---------------------------------------------------------------------
+# sidebar
 st.sidebar.title("Shape Recognition System")
 pages = ["Home", "Upload Image", "Live Camera (snapshot)", "Result & Metrics", "About / Report"]
 try:
@@ -42,9 +38,7 @@ if model is None:
     st.sidebar.warning("No trained model found. Run train_classifier.py first. "
                         "Rule-based classifier will be used regardless of this toggle.")
 
-# ---------------------------------------------------------------------
-# HOME PAGE
-# ---------------------------------------------------------------------
+#homepage 
 if page == "Home":
     st.title("Real-Time Shape Recognition System")
     st.markdown("""
@@ -66,9 +60,7 @@ if page == "Home":
     col2.metric("Classifier", "KNN (from scratch)" if model else "Rule-based")
     col3.metric("Features per shape", "12")
 
-# ---------------------------------------------------------------------
-# UPLOAD IMAGE PAGE
-# ---------------------------------------------------------------------
+#upload image
 elif page == "Upload Image":
     st.title("Upload an Image")
     uploaded = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
@@ -97,9 +89,7 @@ elif page == "Upload Image":
         else:
             st.info("No shapes detected. Try an image with clear, high-contrast shapes on a plain background.")
 
-# ---------------------------------------------------------------------
-# LIVE CAMERA - SNAPSHOT (works everywhere, no extra install needed)
-# ---------------------------------------------------------------------
+#live camera
 elif page == "Live Camera (snapshot)":
     st.title("Live Camera - Snapshot Mode")
     st.caption("Click below, allow camera access, and capture a frame for instant recognition.")
@@ -112,9 +102,6 @@ elif page == "Live Camera (snapshot)":
         if detections:
             st.table([{"Shape": d["label"], "Bounding Box": d["bbox"]} for d in detections])
 
-# ---------------------------------------------------------------------
-# LIVE CAMERA - CONTINUOUS STREAMING (optional, needs streamlit-webrtc)
-# ---------------------------------------------------------------------
 elif page == "Live Camera (streaming)":
     st.title("Live Camera - Continuous Streaming")
     from streamlit_webrtc import webrtc_streamer
@@ -128,9 +115,7 @@ elif page == "Live Camera (streaming)":
 
     webrtc_streamer(key="shape-stream", video_processor_factory=Processor)
 
-# ---------------------------------------------------------------------
-# RESULT & METRICS PAGE
-# ---------------------------------------------------------------------
+##result and metrices
 elif page == "Result & Metrics":
     st.title("Model Performance Metrics")
     try:
@@ -140,9 +125,7 @@ elif page == "Result & Metrics":
     except FileNotFoundError:
         st.warning("Run train_classifier.py first to generate metrics and the confusion matrix.")
 
-# ---------------------------------------------------------------------
-# ABOUT / REPORT PAGE
-# ---------------------------------------------------------------------
+#about
 elif page == "About / Report":
     st.title("About This Project")
     st.markdown("""
