@@ -15,7 +15,7 @@ from shape_utils import extract_features, FEATURE_NAMES
 
 SHAPES = ["Circle", "Square", "Rectangle", "Triangle", "Pentagon", "Hexagon", "Star"]
 IMG_SIZE = 300
-SAMPLES_PER_CLASS = 120  # -> 7 * 120 = 840 total images (well above the 100-min requirement)
+SAMPLES_PER_CLASS = 120  
 
 DATASET_DIR = "dataset"
 MODEL_DIR = "models"
