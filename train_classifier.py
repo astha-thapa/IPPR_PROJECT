@@ -1,25 +1,3 @@
-"""
-train_classifier.py
---------------------
-Builds a labelled shape dataset OURSELVES (no external / pre-trained
-data or models), extracts geometric + Hu-moment features, and trains
-a lightweight classifier (K-Nearest-Neighbours) completely from
-scratch. This satisfies the "pattern recognition / classification"
-requirement of the IPPR guideline without touching any pre-trained
-ML/DL model.
-
-Run:
-    python3 train_classifier.py
-
-Outputs (all needed for the report's "Testing" chapter):
-    dataset/                     -> generated shape images (train+test)
-    models/shape_classifier.pkl  -> trained KNN model
-    models/scaler.pkl            -> feature scaler
-    models/label_encoder.pkl     -> label encoder
-    outputs/confusion_matrix.png
-    outputs/accuracy_report.txt
-"""
-
 import os
 import cv2
 import joblib
