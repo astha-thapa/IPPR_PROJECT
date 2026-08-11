@@ -1,31 +1,3 @@
-"""
-streamlit_app.py
------------------
-Deployable web dashboard for the Real-Time Shape Recognition project.
-Covers Week-5 "Application Development" requirements:
-    Home Page / Upload Image Page / Processing Dashboard /
-    Result Page / Report Page
-
-Run locally:
-    pip install -r requirements.txt
-    streamlit run streamlit_app.py
-
-Deploy for free (so you have a live link for your viva/report):
-    1. Push this project folder to a public GitHub repo.
-    2. Go to https://share.streamlit.io  (Streamlit Community Cloud)
-    3. "New app" -> pick your repo -> main file = streamlit_app.py -> Deploy.
-    That's it - you get a public URL to put in your report/slides.
-
-Live webcam:
-    Plain `streamlit` can only grab ONE frame at a time (st.camera_input),
-    which is fine as a "near real-time" demo page. For a continuously
-    streaming live feed inside the browser, this app also offers a
-    streamlit-webrtc powered page (auto-detected; installs separately -
-    see requirements.txt). If webrtc isn't installed, that page is
-    hidden automatically and you still have the Upload + Camera-snapshot
-    pages, which are enough to satisfy the guideline.
-"""
-
 import time
 import numpy as np
 import cv2
